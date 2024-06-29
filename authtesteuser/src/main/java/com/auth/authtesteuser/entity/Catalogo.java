@@ -25,8 +25,11 @@ public class Catalogo {
     @OneToMany(mappedBy = "catalogo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Livro> livros;
 
-
     
+    
+    public Catalogo() {
+    }
+
     public Catalogo(String tipo, Set<Livro> livros) {
         this.tipo = tipo;
         this.livros = livros;

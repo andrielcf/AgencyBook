@@ -1,8 +1,9 @@
-package com.auth.authtesteuser.security;
+package com.auth.authtesteuser.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.auth.authtesteuser.dto.CatalogoDTO;
@@ -16,13 +17,18 @@ public class CatalogoService {
     @Autowired
     private CatalogoRepository catalogoRepository;
 
-    public void criarCatalogo(CatalogoDTO data){
-        
-        Catalogo catalogo = new Catalogo(data.tipo());
+    public ResponseEntity criarCatalogo(CatalogoDTO data){
 
-        catalogo.setTipo(data.tipo());
 
-        catalogoRepository.save(catalogo);
+
+        if (catalogoRepository.findByTipo(data.tipo().toLowerCase()) == null) {
+            Catalogo catalogo = new Catalogo(data.tipo().toLowerCase());
+            catalogoRepository.save(catalogo);
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
+
 
     }
 

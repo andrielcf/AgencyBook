@@ -27,6 +27,14 @@ public class Livro {
     @JoinColumn(name = "catalogo_id")
     private Catalogo catalogo;
 
+    
+
+    public Livro() {
+        
+    }
+
+
+
     public Livro(String titulo, String autor, String descricao, Boolean status) {
         this.titulo = titulo;
         this.autor = autor;

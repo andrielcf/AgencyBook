@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/catalogo/ver").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/catalogo/ver").permitAll()
                         .requestMatchers(HttpMethod.POST, "/catalogo/criar").permitAll()
                         // .anyRequest().authenticated()
                         )
