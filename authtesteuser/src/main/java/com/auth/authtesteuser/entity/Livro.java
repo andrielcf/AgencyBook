@@ -1,5 +1,7 @@
 package com.auth.authtesteuser.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,24 +27,15 @@ public class Livro {
 
     @ManyToOne
     @JoinColumn(name = "catalogo_id")
+    @JsonBackReference
     private Catalogo catalogo;
 
-    
+
 
     public Livro() {
-        
     }
 
 
-
-    public Livro(String titulo, String autor, String descricao, Boolean status) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.descricao = descricao;
-        this.status = status;
-    }
-
-    
 
     public Livro(String titulo, String autor, String descricao, Boolean status, Catalogo catalogo) {
         this.titulo = titulo;
