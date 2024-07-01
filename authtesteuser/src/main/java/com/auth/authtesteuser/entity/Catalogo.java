@@ -1,9 +1,8 @@
+package com.auth.authtesteuser.entity;
+
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,20 +12,20 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Catalogo")
-public class Catalogo{
+public class Catalogo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private List<Livro> livros;
+    private List<Livro> livro;
 
     public Catalogo(){
 
     }
 
-    public Catalogo(Long id, String livros) {
+    public Catalogo(Long id, Livro livro) {
         this.id = id;
-        this.livros = livros;
+        this.livro = (List<Livro>) livro;
     }
 
     public Long getId() {
@@ -34,16 +33,17 @@ public class Catalogo{
     }
     public void setId(Long id) {
         this.id = id;
+    }
     
     public List<Livro> getLivros() {
-        return livros;
+        return livro;
     }
 
     public void setLivros(List<Livro> livros) {
-        this.livros = livros;
+        this.livro = livros;
     }
 
 
 
-
+    
 }
