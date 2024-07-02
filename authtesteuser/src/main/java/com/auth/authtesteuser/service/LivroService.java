@@ -37,5 +37,18 @@ public class LivroService {
         }
 
     }
+
+    public ResponseEntity pesquisarLivro(String titulo){
+
+        Livro livro = livroRepository.findByTitulo(titulo);
+
+        if(livro != null){
+            
+            return ResponseEntity.ok(livro);
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
     
 }
