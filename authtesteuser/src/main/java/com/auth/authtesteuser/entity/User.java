@@ -2,15 +2,18 @@ package com.auth.authtesteuser.entity;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,6 +36,15 @@ public class User implements UserDetails {
 
     private UserRole role;
 
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Emprestimo> emprestimos;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Historico> historicos;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Reserva> reservas;
     
 
     public User(String email, String password, UserRole role) {
@@ -75,5 +87,7 @@ public class User implements UserDetails {
 
         return true;
     }
+
+    
     
 }

@@ -1,5 +1,7 @@
 package com.auth.authtesteuser.entity;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Livro {
@@ -29,6 +33,12 @@ public class Livro {
     @JoinColumn(name = "catalogo_id")
     @JsonBackReference
     private Catalogo catalogo;
+
+    @OneToOne(mappedBy = "livro")
+    private Emprestimo emprestimo;
+
+    @OneToMany(mappedBy = "livro")
+    private Set<Reserva> reservas;
 
 
 
@@ -94,6 +104,32 @@ public class Livro {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
+
+
+    public Emprestimo getEmprestimo() {
+        return emprestimo;
+    }
+
+
+
+    public void setEmprestimo(Emprestimo emprestimo) {
+        this.emprestimo = emprestimo;
+    }
+
+
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    
 
     
 
