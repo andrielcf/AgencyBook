@@ -25,7 +25,7 @@ public class Emprestimo {
 
     @OneToOne
     @JoinColumn(name = "livro_id")
-    private Livro Livro;
+    private Livro livro;
 
     
     @ManyToOne
@@ -34,6 +34,9 @@ public class Emprestimo {
 
     @OneToOne(mappedBy = "emprestimo", cascade = CascadeType.ALL)
     private Historico historico;
+
+
+
 
     public Long getId() {
         return id;
@@ -59,14 +62,6 @@ public class Emprestimo {
         DataDevolucao = dataDevolucao;
     }
 
-    public Livro getLivro() {
-        return Livro;
-    }
-
-    public void setLivro(Livro livro) {
-        Livro = livro;
-    }
-
     public User getUser() {
         return user;
     }
@@ -81,6 +76,14 @@ public class Emprestimo {
 
     public void setHistorico(Historico historico) {
         this.historico = historico;
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
 

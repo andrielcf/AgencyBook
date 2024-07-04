@@ -55,8 +55,6 @@ public class Livro {
         this.catalogo = catalogo;
     }
 
-
-
     public Long getId() {
         return id;
     }
@@ -128,9 +126,5 @@ public class Livro {
     public void setReservas(Set<Reserva> reservas) {
         this.reservas = reservas;
     }
-
-    
-
-    
 
 }
