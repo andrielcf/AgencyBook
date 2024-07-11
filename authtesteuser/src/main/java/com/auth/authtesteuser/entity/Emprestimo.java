@@ -21,7 +21,7 @@ public class Emprestimo {
 
     private Date dataEmprestimo;
 
-    private Date DataDevolucao;
+    private Date dataDevolucao;
 
     @OneToOne
     @JoinColumn(name = "livro_id")
@@ -34,9 +34,17 @@ public class Emprestimo {
 
     @OneToOne(mappedBy = "emprestimo", cascade = CascadeType.ALL)
     private Historico historico;
+    
 
+    public Emprestimo(Date dataEmprestimo, Date dataDevolucao, Livro livro, User user) {
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.livro = livro;
+        this.user = user;
+    }
 
-
+    public Emprestimo() {
+    }
 
     public Long getId() {
         return id;
@@ -54,13 +62,7 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Date getDataDevolucao() {
-        return DataDevolucao;
-    }
-
-    public void setDataDevolucao(Date dataDevolucao) {
-        DataDevolucao = dataDevolucao;
-    }
+    
 
     public User getUser() {
         return user;
@@ -84,6 +86,14 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public Date getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(Date dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 
 

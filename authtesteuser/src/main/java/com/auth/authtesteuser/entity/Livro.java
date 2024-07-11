@@ -34,11 +34,13 @@ public class Livro {
     @JsonBackReference
     private Catalogo catalogo;
 
-    @OneToOne(mappedBy = "livro")
-    private Emprestimo emprestimo;
+    // @OneToOne(mappedBy = "livro")
+    // @JsonBackReference
+    // private Emprestimo emprestimo;
 
-    @OneToMany(mappedBy = "livro")
-    private Set<Reserva> reservas;
+    // @OneToMany(mappedBy = "livro")
+    // @JsonBackReference
+    // private Set<Reserva> reservas;
 
 
 
@@ -105,26 +107,26 @@ public class Livro {
 
 
 
-    public Emprestimo getEmprestimo() {
-        return emprestimo;
-    }
+    // public Emprestimo getEmprestimo() {
+    //     return emprestimo;
+    // }
 
 
 
-    public void setEmprestimo(Emprestimo emprestimo) {
-        this.emprestimo = emprestimo;
-    }
+    // public void setEmprestimo(Emprestimo emprestimo) {
+    //     this.emprestimo = emprestimo;
+    // }
 
 
 
-    public Set<Reserva> getReservas() {
-        return reservas;
-    }
+    // public Set<Reserva> getReservas() {
+    //     return reservas;
+    // }
 
 
 
-    public void setReservas(Set<Reserva> reservas) {
-        this.reservas = reservas;
-    }
+    // public void setReservas(Set<Reserva> reservas) {
+    //     this.reservas = reservas;
+    // }
 
 }

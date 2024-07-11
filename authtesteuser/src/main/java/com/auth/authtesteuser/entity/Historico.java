@@ -24,6 +24,14 @@ public class Historico {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Historico() {
+    }
+
+    public Historico(Emprestimo emprestimo, User user) {
+        this.emprestimo = emprestimo;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

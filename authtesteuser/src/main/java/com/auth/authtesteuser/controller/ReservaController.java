@@ -7,23 +7,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.auth.authtesteuser.entity.Emprestimo;
-import com.auth.authtesteuser.service.EmprestimoService;
-
+import com.auth.authtesteuser.entity.Reserva;
+import com.auth.authtesteuser.service.ReservaService;
 
 @RestController
-@RequestMapping("/emprestimo")
-public class EmprestimoController {
-
-    @Autowired
-    private EmprestimoService emprestimoService;
-
-    @PostMapping("/registrar")
-    public ResponseEntity registrarEmprestimo(@RequestBody Emprestimo data){
-
-        
-
-        return emprestimoService.registrarEmprestimoUser(data);
-    }
+@RequestMapping("/reserva")
+public class ReservaController {
     
+    
+    @Autowired
+    private ReservaService reservaService;
+    
+    @PostMapping("/registrar")
+    public ResponseEntity reservarLivro(@RequestBody Reserva data){
+
+        return reservaService.reservarLivro(data);
+    }
 }
