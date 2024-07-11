@@ -2,6 +2,8 @@ package com.auth.authtesteuser.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -72,13 +74,13 @@ public class Emprestimo {
         this.user = user;
     }
 
-    public Historico getHistorico() {
-        return historico;
-    }
+    // public Historico getHistorico() {
+    //     return historico;
+    // }
 
-    public void setHistorico(Historico historico) {
-        this.historico = historico;
-    }
+    // public void setHistorico(Historico historico) {
+    //     this.historico = historico;
+    // }
 
     public Livro getLivro() {
         return livro;

@@ -28,13 +28,14 @@ public class EmprestimoService {
 
         emprestimoRepository.save(data);
 
+        System.out.println("AQUI");
+        
         Historico historico = new Historico(data, data.getUser());
-
+        
+        System.out.println("AQUI2");
         historicoRepository.save(historico);
 
         return ResponseEntity.ok().build();
-
-
     }
     
 }

@@ -34,13 +34,11 @@ public class Livro {
     @JsonBackReference
     private Catalogo catalogo;
 
-    // @OneToOne(mappedBy = "livro")
-    // @JsonBackReference
-    // private Emprestimo emprestimo;
+    @OneToOne(mappedBy = "livro")
+    private Emprestimo emprestimo;
 
-    // @OneToMany(mappedBy = "livro")
-    // @JsonBackReference
-    // private Set<Reserva> reservas;
+    @OneToMany(mappedBy = "livro")
+    private Set<Reserva> reservas;
 
 
 

@@ -31,13 +31,19 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/catalogo/ver").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/catalogo/criar").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/livro/criar").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/livro/pesquisar/{titulo}").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/emprestimo/registrar").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/reserva/registrar").permitAll()
-                        // .anyRequest().authenticated()
+                        //
+                        .requestMatchers(HttpMethod.GET, "/catalogo/ver").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/catalogo/criar").hasRole("ADMIN")
+                        //
+                        .requestMatchers(HttpMethod.POST, "/livro/criar").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/livro/pesquisar/{titulo}").hasRole("USER")
+                        //
+                        .requestMatchers(HttpMethod.POST, "/emprestimo/registrar").hasRole("ADMIN")
+                        //
+                        .requestMatchers(HttpMethod.POST, "/reserva/registrar").hasRole("USER")
+                        //
+                        .requestMatchers(HttpMethod.GET, "/historico/ver").hasRole("USER")
+                        .anyRequest().authenticated()
                         )
                 
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

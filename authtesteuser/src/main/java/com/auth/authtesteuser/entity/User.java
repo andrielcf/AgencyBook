@@ -8,6 +8,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,13 +39,15 @@ public class User implements UserDetails {
     private UserRole role;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Emprestimo> emprestimos;
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    // // @JsonBackReference
+    // private Set<Emprestimo> emprestimos;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Historico> historicos;
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    // private Set<Historico> historicos;
 
     @OneToMany(mappedBy = "user")
+    @JsonBackReference
     private Set<Reserva> reservas;
     
 
